@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Valorian — Natural Radiance from Citrus & Botanicals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(160deg, #fff5ec 0%, #ffe8d6 40%, #fff0e8 100%);
+      min-height: 100vh;
+      padding: 0 0 40px 0;
+      color: #2d1a0e;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ff8c42 0%, #f4a261 50%, #e76f51 100%);
+      padding: 36px 24px 32px;
+      text-align: center;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 32px rgba(231,111,81,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .brand-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.88);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content {
+      padding: 0 16px;
+      margin-top: -4px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #e76f51;
+      margin: 28px 0 12px 4px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(255,160,100,0.2);
+      box-shadow: 0 4px 20px rgba(231,111,81,0.08);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .icon-orange { background: linear-gradient(135deg, #ffe8cc, #ffd0a0); }
+    .icon-green  { background: linear-gradient(135deg, #d4f5e2, #a8e6c3); }
+    .icon-blue   { background: linear-gradient(135deg, #ddeeff, #b8daff); }
+
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #2d1a0e;
+      line-height: 1.3;
+    }
+
+    .card .sub {
+      font-size: 12.5px;
+      color: #8b5e3c;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .card p {
+      font-size: 13.5px;
+      color: #5a3a22;
+      line-height: 1.65;
+      margin-top: 6px;
+    }
+
+    .solvent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: linear-gradient(90deg, #fff3e6, #ffe8cc);
+      border: 1px solid #ffc480;
+      color: #a0530a;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .compound-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .compound-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: linear-gradient(90deg, #fff8f3, #fff3ea);
+      border-radius: 12px;
+      border-left: 3px solid #f4a261;
+    }
+
+    .compound-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f4a261, #e76f51);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .compound-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2d1a0e;
+    }
+
+    .compound-benefit {
+      font-size: 12px;
+      color: #7a4a28;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .benefit-pill {
+      background: linear-gradient(135deg, #fff5ec, #ffe8d6);
+      border: 1px solid rgba(244,162,97,0.35);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 12.5px;
+      color: #7a3e18;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .benefit-pill .pill-icon {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .kokum-benefits {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .kokum-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      background: linear-gradient(90deg, #f0faf5, #e8f7f0);
+      border-radius: 12px;
+      border-left: 3px solid #52b788;
+      font-size: 13px;
+      color: #1a4a32;
+      font-weight: 500;
+    }
+
+    .kokum-item span:first-child { font-size: 16px; }
+
+    .non-comedo-card {
+      background: linear-gradient(135deg, #e8f4fd, #d0eaff);
+      border: 1px solid #90c8f0;
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nc-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #4facde, #2980b9);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .nc-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #0d3d6e;
+    }
+
+    .nc-desc {
+      font-size: 12px;
+      color: #2260a0;
+      margin-top: 2px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 24px 10px;
+      font-size: 11.5px;
+      color: #b07850;
+      letter-spacing: 1px;
+    }
+
+    .footer .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #e76f51;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(244,162,97,0.4), transparent);
+      margin: 6px 0 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="brand-badge">✦ VALORIAN ✦</div>
+    <h1>Natural Radiance from<br>Citrus & Botanicals</h1>
+    <p class="tagline">Science-backed ingredients. Skin that glows.</p>
+  </div>
+
+  <div class="content">
+
+    <p class="section-label">🍊 Orange Peel Extract</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon-circle icon-orange">🍊</div>
+        <div>
+          <h2>Citrus Brightening Complex</h2>
+          <p class="sub">Cold-pressed from organic orange peel</p>
+        </div>
+      </div>
+      <p>Packed with nature's most powerful skin actives, orange peel extract brings radiance, clarity, and youth back to your skin.</p>
+      <div class="solvent-badge">🧪 Extracted with Glycerin + Water &nbsp;·&nbsp; Safe Cosmetic Solvent</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon-circle icon-orange">🔬</div>
+        <div>
+          <h2>Bioactive Compounds</h2>
+          <p class="sub">What's inside & what it does</p>
+        </div>
+      </div>
+      <div class="compound-list">
+        <div class="compound-item">
+          <div class="compound-dot">C</div>
+          <div>
+            <div class="compound-name">Vitamin C</div>
+            <div class="compound-benefit">✦ Brightens skin tone · Boosts collagen production</div>
+          </div>
+        </div>
+        <div class="compound-item">
+          <div class="compound-dot">F</div>
+          <div>
+            <div class="compound-name">Flavonoids</div>
+            <div class="compound-benefit">✦ Powerful antioxidant · Fights signs of aging</div>
+          </div>
+        </div>
+        <div class="compound-item">
+          <div class="compound-dot">L</div>
+          <div>
+            <div class="compound-name">Limonene</div>
+            <div class="compound-benefit">✦ Antimicrobial action · Refreshing & purifying</div>
+          </div>
+        </div>
+        <div class="compound-item">
+          <div class="compound-dot">A</div>
+          <div>
+            <div class="compound-name">Citric Acid</div>
+            <div class="compound-benefit">✦ Mild exfoliation · Restores natural glow</div>
+          </div>
+        </div>
+        <div class="compound-item">
+          <div class="compound-dot">P</div>
+          <div>
+            <div class="compound-name">Polyphenols</div>
+            <div class="compound-benefit">✦ Shields skin from environmental stressors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon-circle icon-orange">✨</div>
+        <div>
+          <h2>Skin Benefits</h2>
+          <p class="sub">What you'll see & feel</p>
+        </div>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-pill"><span class="pill-icon">☀️</span>Brightens Complexion</div>
+        <div class="benefit-pill"><span class="pill-icon">💫</span>Reduces Dullness</div>
+        <div class="benefit-pill"><span class="pill-icon">🎯</span>Acne Control</div>
+        <div class="benefit-pill"><span class="pill-icon">🌸</span>Smoother Texture</div>
+      </div>
+    </div>
+
+    <p class="section-label">🌿 Kokum Butter</p>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon-circle icon-green">🌿</div>
+        <div>
+          <h2>Kokum Butter</h2>
+          <p class="sub">From Garcinia indica · Nature's skin food</p>
+        </div>
+      </div>
+      <p>A rare tropical butter prized for its ultra-light, melt-in texture that deeply nourishes without ever feeling heavy or greasy.</p>
+      <div class="kokum-benefits">
+        <div class="kokum-item"><span>💧</span><span>Deeply nourishes & replenishes moisture</span></div>
+        <div class="kokum-item"><span>🩹</span><span>Repairs cracked & dry skin</span></div>
+        <div class="kokum-item"><span>🌱</span><span>Improves skin elasticity & firmness</span></div>
+        <div class="kokum-item"><span>🕊️</span><span>Soothes irritation & redness</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon-circle icon-blue">🧪</div>
+        <div>
+          <h2>Comedogenic Profile</h2>
+          <p class="sub">Pore safety · Clinically assessed</p>
+        </div>
+      </div>
+      <div class="non-comedo-card">
+        <div class="nc-icon">✅</div>
+        <div>
+          <div class="nc-title">Non-Comedogenic</div>
+          <div class="nc-desc">Does not clog pores — safe for oily & acne-prone skin types</div>
+        </div>
+      </div>
+      <p style="margin-top:12px;font-size:12.5px;color:#6b4c2a;">Unlike many heavy butters, Kokum Butter has a comedogenic rating of 0 — making it one of the few rich butters suitable for all skin types, including oily and sensitive.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="brand">VALORIAN</span>
+    <div class="divider"></div>
+    Premium Botanical Skincare
+  </div>
+
+</body>
+</html>
